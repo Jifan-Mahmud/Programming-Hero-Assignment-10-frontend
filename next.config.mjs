@@ -1,12 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
-  experimental: {
-    agentFeedback: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+      },
+    ],
   },
-  cacheComponents: true,
-  partialPrefetching: true,
-  reactCompiler: true,
   turbopack: {
     rules: {
       "*.css": {
@@ -14,6 +15,14 @@ const nextConfig = {
         as: "*.css",
       },
     },
+  },
+  async rewrites() {
+    return [
+      {
+        source: "/backend-api/:path*",
+        destination: "http://localhost:5000/api/:path*",
+      },
+    ];
   },
 };
 
