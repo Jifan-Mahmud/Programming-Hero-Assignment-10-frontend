@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
+import FeaturedReviews from "@/components/FeaturedReviews";
 import Footer from "@/components/Footer";
 import { useApp } from "@/context/AppContext";
 import { motion } from "motion/react";
@@ -547,6 +548,9 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+
+        {/* Athlete Reviews & 5-Star Testimonials */}
+        <FeaturedReviews />
       </main>
 
       <Footer />

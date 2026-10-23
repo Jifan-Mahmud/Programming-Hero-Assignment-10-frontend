@@ -3,7 +3,9 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useApp } from "@/context/AppContext";
-import { CalendarCheck, ArrowRight, Clock, DollarSign, Calendar } from "lucide-react";
+import { CalendarCheck, ArrowRight, Download, Video, Calendar, Sparkles } from "lucide-react";
+import { generateInvoicePDF } from "@/lib/invoiceGenerator";
+import toast from "react-hot-toast";
 
 export default function BookedClassesPage() {
   const { user, BACKEND_URL } = useApp();
@@ -23,16 +25,49 @@ export default function BookedClassesPage() {
       .catch(() => setLoading(false));
   }, [user, BACKEND_URL]);
 
+  const handleDownloadInvoice = (b) => {
+    try {
+      generateInvoicePDF({
+        bookingId: b._id || `BOOK-${Date.now()}`,
+        transactionId: b.transactionId || `tx_${Math.random().toString(36).substring(2, 9)}`,
+        userName: user?.name || b.userName || "PulseForge Athlete",
+        userEmail: user?.email || b.userEmail,
+        className: b.className || "Elite Conditioning Class",
+        category: b.category || "Fitness Conditioning",
+        trainerName: b.trainerName || "Certified Master Trainer",
+        schedule: b.schedule || "Scheduled Session",
+        price: b.price || 49.99,
+        date: new Date(b.paidAt || b.createdAt || Date.now()).toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        }),
+      });
+      toast.success("Branded PDF Invoice downloaded successfully!");
+    } catch (err) {
+      console.error("PDF generation failed:", err);
+      toast.error("Failed to generate PDF. Please try again.");
+    }
+  };
+
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-black text-white flex items-center gap-2">
-          <CalendarCheck className="w-6 h-6 text-emerald-400" />
-          My Booked Classes
-        </h1>
-        <p className="text-xs text-slate-400 mt-1">
-          Review all sessions you have successfully enrolled in and confirmed with Stripe payment.
-        </p>
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <h1 className="text-2xl font-black text-white flex items-center gap-2">
+            <CalendarCheck className="w-6 h-6 text-emerald-400" />
+            My Booked Classes
+          </h1>
+          <p className="text-xs text-slate-400 mt-1">
+            Review sessions you have enrolled in, join live workout streams, and download official payment receipts.
+          </p>
+        </div>
+        <Link
+          href="/classes"
+          className="self-start md:self-auto inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-orange-500/10 hover:bg-orange-500/20 text-orange-400 border border-orange-500/20 text-xs font-bold transition-all"
+        >
+          <Sparkles className="w-3.5 h-3.5" /> Book More Classes
+        </Link>
       </div>
 
       <div className="rounded-3xl bg-[#111827] border border-white/10 overflow-hidden shadow-xl">
@@ -63,7 +98,7 @@ export default function BookedClassesPage() {
                   <th className="py-4 px-6">Trainer</th>
                   <th className="py-4 px-6">Schedule</th>
                   <th className="py-4 px-6">Paid Fee</th>
-                  <th className="py-4 px-6 text-right">Action</th>
+                  <th className="py-4 px-6 text-right">Actions</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/5">
@@ -90,12 +125,35 @@ export default function BookedClassesPage() {
                       ${b.price}
                     </td>
                     <td className="py-4 px-6 text-right">
-                      <Link
-                        href={`/classes/${b.classId}`}
-                        className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl bg-white/[0.05] hover:bg-emerald-500 hover:text-black font-semibold text-xs border border-white/10 hover:border-emerald-500 transition-all"
-                      >
-                        View Details
-                      </Link>
+                      <div className="flex items-center justify-end gap-2">
+                        {/* Live Video Button */}
+                        <Link
+                          href={`/live-class/${b.classId}`}
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-red-500/10 hover:bg-red-500 text-red-400 hover:text-white font-bold text-xs border border-red-500/20 transition-all shadow-sm"
+                          title="Join Live Workout Video Stream"
+                        >
+                          <Video className="w-3.5 h-3.5 animate-pulse" />
+                          <span>Join Live</span>
+                        </Link>
+
+                        {/* PDF Download Button */}
+                        <button
+                          onClick={() => handleDownloadInvoice(b)}
+                          className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl bg-orange-500/10 hover:bg-orange-500 text-orange-400 hover:text-white font-bold text-xs border border-orange-500/20 transition-all"
+                          title="Download Official PDF Payment Receipt"
+                        >
+                          <Download className="w-3.5 h-3.5" />
+                          <span>Invoice</span>
+                        </button>
+
+                        {/* View Details */}
+                        <Link
+                          href={`/classes/${b.classId}`}
+                          className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl bg-white/[0.05] hover:bg-emerald-500 hover:text-black font-semibold text-xs border border-white/10 hover:border-emerald-500 transition-all"
+                        >
+                          Details
+                        </Link>
+                      </div>
                     </td>
                   </tr>
                 ))}

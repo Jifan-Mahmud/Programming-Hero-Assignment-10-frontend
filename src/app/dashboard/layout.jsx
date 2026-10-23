@@ -7,6 +7,9 @@ import { useApp } from "@/context/AppContext";
 import Navbar from "@/components/Navbar";
 import {
   LayoutDashboard,
+  Utensils,
+  Scale,
+  MessageCircle,
   CalendarCheck,
   Award,
   Heart,
@@ -50,7 +53,10 @@ export default function DashboardLayout({ children }) {
   // Role-Based Navigation Items
   const userNav = [
     { name: "Overview", href: "/dashboard", icon: LayoutDashboard },
-    { name: "Booked Classes", href: "/dashboard/booked-classes", icon: CalendarCheck },
+    { name: "Booked Classes & Receipts", href: "/dashboard/booked-classes", icon: CalendarCheck },
+    { name: "Diet & Workout Tracker", href: "/dashboard/tracker", icon: Utensils },
+    { name: "Transformation Graph", href: "/dashboard/transformation", icon: Scale },
+    { name: "Live Coach Chat", href: "/dashboard/chat", icon: MessageCircle },
     { name: "Favorite Classes", href: "/dashboard/favorites", icon: Heart },
     { name: "Apply as Trainer", href: "/dashboard/apply-trainer", icon: Award },
   ];
@@ -59,6 +65,8 @@ export default function DashboardLayout({ children }) {
     { name: "Overview", href: "/dashboard", icon: LayoutDashboard },
     { name: "Add Class", href: "/dashboard/add-class", icon: PlusCircle },
     { name: "My Classes", href: "/dashboard/my-classes", icon: FolderKanban },
+    { name: "Student Diet & Workout Plans", href: "/dashboard/tracker", icon: Utensils },
+    { name: "Live Student Chat", href: "/dashboard/chat", icon: MessageCircle },
     { name: "Add Forum Post", href: "/dashboard/add-forum-post", icon: FileText },
     { name: "My Forum Posts", href: "/dashboard/my-forum-posts", icon: MessageSquare },
   ];
@@ -69,6 +77,9 @@ export default function DashboardLayout({ children }) {
     { name: "Applied Trainers", href: "/dashboard/applied-trainers", icon: CheckSquare },
     { name: "Manage Trainers", href: "/dashboard/manage-trainers", icon: UserCog },
     { name: "Manage Classes", href: "/dashboard/manage-classes", icon: FolderKanban },
+    { name: "Diet & Workout Protocols", href: "/dashboard/tracker", icon: Utensils },
+    { name: "Transformation Analytics", href: "/dashboard/transformation", icon: Scale },
+    { name: "Direct Support Chat", href: "/dashboard/chat", icon: MessageCircle },
     { name: "Transactions", href: "/dashboard/transactions", icon: DollarSign },
     { name: "Forum Moderation", href: "/dashboard/manage-forum", icon: MessageSquare },
     { name: "Add Forum Post", href: "/dashboard/add-forum-post", icon: PlusCircle },

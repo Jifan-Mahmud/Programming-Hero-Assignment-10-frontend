@@ -2,7 +2,10 @@
 
 import React, { useState, useEffect, use } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import ClassReviews from "@/components/ClassReviews";
+import {
+  Video,
+  MessageCircle, useRouter } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useApp } from "@/context/AppContext";
@@ -263,6 +266,13 @@ export default function ClassDetailsPage({ params }) {
                   <ShieldCheck className="w-4 h-4" /> Verified Coach
                 </div>
               </div>
+
+              {/* Athlete Reviews & 5-Star Ratings */}
+              <ClassReviews
+                classId={classId}
+                className={classData?.title || classData?.name}
+                trainerName={classData?.trainerName}
+              />
             </div>
 
             {/* Right Column: Sticky Booking & Actions Card */}
@@ -318,6 +328,17 @@ export default function ClassDetailsPage({ params }) {
                     <CreditCard className="w-4 h-4" />
                     {isBooked ? "Already Booked" : "Book Now & Checkout"}
                   </button>
+
+                  {/* Join Live Workout Studio CTA */}
+                  {isBooked && (
+                    <Link
+                      href={`/live-class/${classId}`}
+                      className="w-full py-3.5 rounded-2xl font-black text-xs flex items-center justify-center gap-2 bg-gradient-to-r from-red-500 to-rose-600 hover:from-red-600 hover:to-rose-700 text-white shadow-lg shadow-red-500/25 hover:scale-[1.02] active:scale-95 transition-all"
+                    >
+                      <Video className="w-4 h-4 animate-pulse" />
+                      <span>Join Live Workout Studio 🔴</span>
+                    </Link>
+                  )}
 
                   {/* Secondary Action: Add to Favorites Button */}
                   <button

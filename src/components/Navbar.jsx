@@ -106,6 +106,17 @@ export default function Navbar() {
               )}
             </button>
 
+            {/* Quick Direct Chat Shortcut */}
+            {user && (
+              <Link
+                href="/dashboard/chat"
+                className="p-2.5 rounded-xl border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 hover:text-orange-500 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-colors"
+                title="Direct Messages & Coach Support"
+              >
+                <MessageSquare className="w-4 h-4" />
+              </Link>
+            )}
+
             {/* Notifications Bell */}
             {user && (
               <div className="relative">

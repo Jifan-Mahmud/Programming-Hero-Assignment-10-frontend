@@ -37,6 +37,15 @@
 
 ## ✨ Key Features & User Experience
 
+### 🚀 7 New Enterprise Features
+- **💬 Real-Time 1-on-1 Coach Chat (`/dashboard/chat`):** Instant direct messaging channel between athletes and certified coaches with unread indicators and active status.
+- **📹 Live Online Video Class (`/live-class/[id]`):** WebRTC camera stream, audio controls, screen sharing, and an interactive Tabata/Interval round timer HUD directly in browser.
+- **📄 Branded PDF Invoice Download (`jsPDF`):** Instant download of official PulseForge payment receipts with transaction IDs and gym authorization seals.
+- **📧 Automated Email Notifications:** Dynamic HTML confirmation receipts on booking and application reviews.
+- **🥗 Personalized Diet & Workout Tracker (`/dashboard/tracker`):** Daily macro nutrition meters, meal check-offs, and exercise routines with sets/reps.
+- **📈 Body Transformation & Weight Loss Analytics (`/dashboard/transformation`):** Recharts area curves plotting weight loss and body fat milestones over time.
+- **⭐ Reviews & Star Rating System (`ClassReviews`):** 5-star interactive rating and review system on class detail pages and homepage showcases.
+
 ### 🎨 1. Modern Design & Adaptive Theming
 - **Tailwind CSS v4 & Glassmorphism:** Sleek, modern styling with subtle glassmorphic navigation and card structures.
 - **Dynamic Dark/Light Mode:** Instant theme toggler with zero-flicker state persistent in `localStorage`.
