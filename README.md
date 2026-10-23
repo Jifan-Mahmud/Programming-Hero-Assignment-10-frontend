@@ -17,8 +17,8 @@
 </p>
 
 <p align="center">
-  <a href="https://pulseforge-fitness.vercel.app">🌐 Live Frontend</a> •
-  <a href="https://pulseforge-api.vercel.app">📡 Live Backend API</a> •
+  <a href="https://assignment-10-frontend-amber.vercel.app">🌐 Live Frontend</a> •
+  <a href="https://assignment-10-backend-inky.vercel.app">📡 Live Backend API</a> •
   <a href="https://github.com/Jifan-Mahmud/Programming-Hero-Assignment-10-backend">💻 Backend Repository</a>
 </p>
 
@@ -28,8 +28,8 @@
 
 | Item | Live Link / Repository |
 |---|---|
-| **Frontend Application** | [https://pulseforge-fitness.vercel.app](https://pulseforge-fitness.vercel.app) |
-| **Backend REST API** | [https://pulseforge-api.vercel.app](https://pulseforge-api.vercel.app) |
+| **Frontend Application** | [https://assignment-10-frontend-amber.vercel.app](https://assignment-10-frontend-amber.vercel.app) |
+| **Backend REST API** | [https://assignment-10-backend-inky.vercel.app](https://assignment-10-backend-inky.vercel.app) |
 | **Frontend GitHub Repo** | [Programming-Hero-Assignment-10-frontend](https://github.com/Jifan-Mahmud/Programming-Hero-Assignment-10-frontend) |
 | **Backend GitHub Repo** | [Programming-Hero-Assignment-10-backend](https://github.com/Jifan-Mahmud/Programming-Hero-Assignment-10-backend) |
 
@@ -180,9 +180,9 @@ Open [http://localhost:3000](http://localhost:3000) to view the application.
 1. Import this repository into Vercel and select `frontend` as the **Root Directory**.
 2. Framework Preset will be automatically detected as **Next.js**.
 3. In **Environment Variables**, add the keys from your `.env` file:
-   - `NEXT_PUBLIC_BACKEND_URL` ➔ `https://pulseforge-api.vercel.app`
-   - `NEXT_PUBLIC_API_URL` ➔ `https://pulseforge-fitness.vercel.app`
-   - `BETTER_AUTH_URL` ➔ `https://pulseforge-fitness.vercel.app`
+   - `NEXT_PUBLIC_BACKEND_URL` ➔ `https://assignment-10-backend-inky.vercel.app`
+   - `NEXT_PUBLIC_API_URL` ➔ `https://assignment-10-frontend-amber.vercel.app`
+   - `BETTER_AUTH_URL` ➔ `https://assignment-10-frontend-amber.vercel.app`
 4. Click **Deploy**.
 
 ---
